@@ -1,5 +1,7 @@
 \documentclass{article}
 \usepackage{biblatex}[backend=biber,style=plain]
+\usepackage{pgfplots}
+\usepackage{adjustbox}
 \addbibresource{main.bib}
 \title{\bfseries{
     Examination of the Effects of Programming Languages on Developer Productivity, as Measured by Time
@@ -17,7 +19,56 @@
 
 \section{Introduction}
 
-In one year on earth, developers will spend around 7 billion hours\cite{prechelt2000} interacting with a programming language. That is comparable to the lifetime of planets. At this scale, productivity clearly matters. A change of as little as 1\% can free up tens of millions of hours. These hours can go towards fueling innovation. Because of the importance of programmer productivity, we study which popular programming language makes developers the most productive. Additionally, we analyze the tradeoffs of each language.
+In one year on earth, developers will spend around 7 billion hours\cite{softwareCodeTime} interacting with a programming language. That is comparable to the lifetime of planets. At this scale, productivity clearly matters. A change of as little as 1\% can free up tens of millions of hours. These hours can go towards fueling innovation. Because of the importance of programmer productivity, we study which popular programming language makes developers the most productive. Additionally, we analyze the tradeoffs of each language. According to both a survey of language popularity\cite{tiobe} and a study analzying the ease of use of writing a string parsing function in a number of different programming languages\cite{prechelt2000}, Python and other scripting languages are prefereable in terms of developer efficiency.
+
+\section{Experimental Design}
+
+The experiment consisted of making a program that organizes files in a directory into sub-folders based on their file type. For example, it would take \texttt{image.png} and change it into \texttt{Png/image.png}. This task requires many things. First, it requires a good standard library as well as robust error handling and string manipulation. It is also similar to real-world work, which is very focused on the filesystem. This program is to be implemented in 5 different languages:
+
+
+\begin{itemize}
+        \item C++
+        \item Python
+        \item JavaScript
+        \item Rust
+        \item Java
+\end{itemize}
+
+Once the development environemnt is set up, a stopwatch is started while the software is being written. If, for any reason, a break must occur, the stopwatch is paused and then unpaused as neccessary.Finally, the times are written down in a notes document once development is over. This process repeats for each programming language. 
+
+\section{Results}
+
+The results for each programming language are tabulated below.
+\begin{center}
+\begin{adjustbox}{center}
+\begin{tikzpicture}
+\begin{axis}[
+        ybar,
+        enlargelimits=0.1,
+        ylabel={Minutes (lower is better)},
+        symbolic x coords={C++, Rust, Java, JavaScript, Python},
+        xtick=data,
+        xticklabel style = {rotate=60,anchor=east},
+        enlargelimits = true,
+        grid,
+        bar width =1cm,
+        ytick={20,25,30,35,40,45,50,55},
+        ymin=20,         
+        ]
+        \addplot[black,fill=lightgray] coordinates {(C++, 53) (Rust, 41) (Java, 36) (JavaScript, 35) (Python, 26)};
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+\end{center}
+
+According to these results, A winner is clear. Python took only 25 minutes while JavaScript took nearly ten minutes more. Java took 36 minutes while Rust took 41. The C++ implementation took 42 minutes to write, more than twice the time took to write the python implementation.
+
+\section{Limitations of This Study}
+
+While our findings to corroborate similar studies on the topic, we acknowledge the limitations of this study. Firstly, the results may have been distorted by the fact that, for a given person, profficiency varies by the programming language. By only having one person undergo the experiment, we risk generalizing the varied skills of one programmer to the whole industry. Additionally, when choosing a language productivity and ease of coding are rarely the only consideration, which is good. While writing Python is twice as fast as writing C++, no one is seriously considering implementing a database or operating system in Python.
+
+\section{Conclusion}
+
 
 \printbibliography
 
