@@ -1,12 +1,25 @@
 \documentclass{article}
+\usepackage{fontspec}
 \usepackage{biblatex}[backend=biber,style=plain]
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{adjustbox}
 \addbibresource{main.bib}
-\title{\bfseries{
+\usepackage{titling}
+\usepackage{titlesec}
+
+\setmainfont{Nexus Sans Pro}
+\newfontfamily\headingfont{Nexus Serif Pro}[Numbers=Lining]
+\setmonofont{Nexus Typewriter Pro}
+
+\titleformat*{\section}{\LARGE\headingfont}
+\titleformat*{\subsection}{\Large\headingfont}
+\titleformat*{\subsubsection}{\large\headingfont}
+\renewcommand{\maketitlehooka}{\Huge\huge\headingfont}
+
+\title{
     Examination of the Effects of Programming Languages on Developer Productivity, as Measured by Time
-}}
+}
 \author{Ben Raz \texttt{<ben.raz@student.winstonprep.edu>}}
 \date{\today}
 
@@ -57,7 +70,7 @@ The results for each programming language are tabulated below.
         ytick={20,25,30,35,40,45,50,55},
         ymin=20,         
         ]
-        \addplot[draw=none,fill=white!20!blue!55!green!90!red] coordinates {(C++, 53) (Rust, 41) (Java, 36) (JavaScript, 35) (Python, 26)};
+        \addplot[draw=none,fill=white!20!green!80!blue] coordinates {(C++, 53) (Rust, 41) (Java, 36) (JavaScript, 35) (Python, 26)};
 \end{axis}
 \end{tikzpicture}
 \end{adjustbox}
