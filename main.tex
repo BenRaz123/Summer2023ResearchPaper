@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{biblatex}[backend=biber,style=plain]
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usepackage{adjustbox}
 \addbibresource{main.bib}
 \title{\bfseries{
@@ -51,17 +52,18 @@ The results for each programming language are tabulated below.
         xticklabel style = {rotate=60,anchor=east},
         enlargelimits = true,
         grid,
+        %axis lines=left,
         bar width =1cm,
         ytick={20,25,30,35,40,45,50,55},
         ymin=20,         
         ]
-        \addplot[black,fill=lightgray] coordinates {(C++, 53) (Rust, 41) (Java, 36) (JavaScript, 35) (Python, 26)};
+        \addplot[draw=none,fill=white!20!blue!55!green!90!red] coordinates {(C++, 53) (Rust, 41) (Java, 36) (JavaScript, 35) (Python, 26)};
 \end{axis}
 \end{tikzpicture}
 \end{adjustbox}
 \end{center}
 
-According to these results, A winner is clear. Python took only 25 minutes while JavaScript took nearly ten minutes more. Java took 36 minutes while Rust took 41. The C++ implementation took 42 minutes to write, more than twice the time took to write the python implementation.
+According to these results, A winner is clear. Python took only 25 minutes while JavaScript took nearly ten minutes more. Java took 36 minutes while Rust took 41. The C++ implementation took 52 minutes to write, more than twice the time took to write the python implementation.
 
 \section{Limitations of This Study}
 
@@ -69,6 +71,7 @@ While our findings to corroborate similar studies on the topic, we acknowledge t
 
 \section{Conclusion}
 
+After testing five different programming languages with a file manipulation program, we conclude, in concordance with the current literature, that high-level interpreted scripting languages like python generally outperform low-level compiled languages like C++. We further recognize the limitations of the generality of our results, namely small sample size, and reccommend further research consisting of subjects from a wide variety of subproffesions within programming.
 
 \printbibliography
 
