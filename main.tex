@@ -8,8 +8,8 @@
 \usepackage{titling}
 \usepackage{titlesec}
 
-\setmainfont{Nexus Sans Pro}
-\newfontfamily\headingfont{Nexus Serif Pro}[Numbers=Lining]
+\setmainfont{Nexus Sans Pro}[Scale=MatchUppercase]
+\newfontfamily\headingfont{Nexus Serif Pro}[Numbers=Lining,Scale=MatchUppercase]
 \setmonofont{Nexus Typewriter Pro}
 
 \titleformat*{\section}{\LARGE\headingfont}
@@ -18,7 +18,7 @@
 \renewcommand{\maketitlehooka}{\Huge\huge\headingfont}
 
 \title{
-    Examination of the Effects of Programming Languages on Developer Productivity, as Measured by Time
+    Examination of the Effects of Programming Languages on Developer Productivity, as Measugreen by Time
 }
 \author{Ben Raz \texttt{<ben.raz@student.winstonprep.edu>}}
 \date{\today}
@@ -57,34 +57,32 @@ The results for each programming language are tabulated below.
 \begin{adjustbox}{center}
 \begin{tikzpicture}
 \begin{axis}[
-        ybar,
-        enlargelimits=0.1,
-        ylabel={Minutes (lower is better)},
-        symbolic x coords={C++, Rust, Java, JavaScript, Python},
-        xtick=data,
-        xticklabel style = {rotate=60,anchor=east},
-        enlargelimits = true,
+        symbolic x coords={C++,,Rust,,Java,,JavaScript,,Python},
+        xticklabel style={rotate=45,anchor=north east},
+        xtick={C++,Rust,Java,JavaScript,Python},
+        ylabel=Coding Time (Lower is better),
         grid,
-        %axis lines=left,
-        bar width =1cm,
-        ytick={20,25,30,35,40,45,50,55},
-        ymin=20,         
+        bar width=27pt,
         ]
-        \addplot[draw=none,fill=white!20!green!80!blue] coordinates {(C++, 53) (Rust, 41) (Java, 36) (JavaScript, 35) (Python, 26)};
+        \addplot[ybar,draw=none,fill=green!10!gray!40!white] coordinates {(C++, 53)};
+        \addplot[ybar,draw=none,fill=green!15!gray!45!white] coordinates {(Rust, 41)};
+        \addplot[ybar,draw=none,fill=green!20!gray!50!white] coordinates {(Java, 36)};
+        \addplot[ybar,draw=none,fill=green!25!gray!55!white] coordinates {(JavaScript, 35)};
+        \addplot[ybar,draw=none,fill=white!10!green!80!blue] coordinates {(Python, 26)};
 \end{axis}
 \end{tikzpicture}
 \end{adjustbox}
 \end{center}
 
-According to these results, A winner is clear. Python took only 25 minutes while JavaScript took nearly ten minutes more. Java took 36 minutes while Rust took 41. The C++ implementation took 52 minutes to write, more than twice the time took to write the python implementation.
+According to these results, A winner is clear. Python took only 25 minutes while JavaScript took nearly ten minutes more. Java took 36 minutes while Rust took 41. The C++ implementation took 52 minutes to write, more than twice the time took to write the Python implementation.
 
 \section{Limitations of This Study}
 
-While our findings to corroborate similar studies on the topic, we acknowledge the limitations of this study. Firstly, the results may have been distorted by the fact that, for a given person, profficiency varies by the programming language. By only having one person undergo the experiment, we risk generalizing the varied skills of one programmer to the whole industry. Additionally, when choosing a language productivity and ease of coding are rarely the only consideration, which is good. While writing Python is twice as fast as writing C++, no one is seriously considering implementing a database or operating system in Python.
+While our findings to corroborate similar studies on the topic, we acknowledge the limitations of this study. Firstly, the results may have been distorted by the fact that, for a given person, profficiency varies by the programming language. By only having one person undergo the experiment, we risk generalizing the varied skills of one programmer to the whole industry. Additionally, when choosing a language productivity and ease of coding are rarely the only consideration, which is good. While writing Python is twice as fast as writing C++, no one is seriously considering implementing a database or operating system in Python due to the overwhelming performance differences (Python is almost 200 times slower than C++).
 
 \section{Conclusion}
 
-After testing five different programming languages with a file manipulation program, we conclude, in concordance with the current literature, that high-level interpreted scripting languages like python generally outperform low-level compiled languages like C++. We further recognize the limitations of the generality of our results, namely small sample size, and reccommend further research consisting of subjects from a wide variety of subproffesions within programming.
+After testing five different programming languages with a file manipulation program, we conclude, in concordance with the current literature, that high-level interpreted scripting languages like Python generally outperform low-level compiled languages like C++. We further recognize the limitations of the generality of our results, namely small sample size, and reccommend further research consisting of subjects from a wide variety of subproffesions within programming.
 
 \printbibliography
 
